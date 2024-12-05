@@ -5,3 +5,4 @@ extract_github/data/
 Dev_test/config/
 Dev_test/data/
 
+*.pyc
