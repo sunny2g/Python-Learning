@@ -3,6 +3,7 @@
 import requests
 from datetime import datetime, timedelta 
 from config.env_variables import GITHUB_API_URL,USERNAME,TOKEN
+import json
 
 ## Improvements
 # Send daily mail with the streak count 
@@ -20,6 +21,15 @@ def fetch_github_events(username):
         return []
 
 events = fetch_github_events(USERNAME)
+
+
+## Added the code to save json data in file.
+current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+file_path = f"data/github_{current_datetime}.json"
+with open(file_path, 'w') as file:
+    json.dump(events, file, indent=4) 
+    print(f"Data has been written to {file_path}")
+
 ## print(events)
 
 
