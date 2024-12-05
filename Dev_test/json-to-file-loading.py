@@ -1,3 +1,6 @@
+
+
+"""
 import json
 from datetime import datetime
 
@@ -6,6 +9,7 @@ data = {
     "age": 30,
     "city": "New York"
 }
+
 
 # Specify the path where the file will be saved
 current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -16,3 +20,11 @@ with open(file_path, 'w') as file:
     json.dump(data, file, indent=4)  # 'indent=4' formats the JSON data for better readability
 
 print(f"Data has been written to {file_path}")
+
+"""
+
+
+
+
+
+

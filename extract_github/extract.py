@@ -70,3 +70,11 @@ streaks = calculate_streak(events)
 
 # Print the streaks 
 print("User's Streak (in Days ): " , streaks) 
+
+
+# Adding Mailing functionality
+# SMTP server settings for Gmail
+subject = "Github_Streak_Mails"
+body = f"User's Streak (in Days ): {streaks}"
+from include.func_file import mail_user
+mail_user(streaks,subject,body)
