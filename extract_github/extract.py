@@ -2,26 +2,15 @@
 
 import requests
 from datetime import datetime, timedelta 
-from config.env_variables import GITHUB_API_URL,USERNAME,TOKEN
+from config.env_variables import USERNAME
+from include.func_file import fetch_github_events
 import json
 
 ## Improvements
 # Send daily mail with the streak count 
 # Send more information like commit info project name timestamp etc.
 
-def fetch_github_events(username):
-    events_url = f"{GITHUB_API_URL}/users/{username}/events/public"
-    headers = {'Authorization' : f'token {TOKEN}'}
-    response = requests.get(events_url, headers=headers)
-    if response.status_code == 200 :
-        print("Able to connect to github")
-        return response.json() # Returns event data as a JSON List
-    else:
-        print("Failed to fetch events data: ", response.status_code)
-        return []
-
 events = fetch_github_events(USERNAME)
-
 
 ## Added the code to save json data in file.
 current_datetime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")

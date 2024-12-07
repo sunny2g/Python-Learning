@@ -1,3 +1,5 @@
+import requests
+from config.env_variables import GITHUB_API_URL,USERNAME,TOKEN
 
 
 def mail_user(streaks,subject,body) :
@@ -26,3 +28,15 @@ def mail_user(streaks,subject,body) :
         print("Email sent successfully!")
     except Exception as e:
         print(f"Failed to send email: {e}")
+
+
+def fetch_github_events(username):
+    events_url = f"{GITHUB_API_URL}/users/{username}/events/public"
+    headers = {'Authorization' : f'token {TOKEN}'}
+    response = requests.get(events_url, headers=headers)
+    if response.status_code == 200 :
+        print("Able to connect to github")
+        return response.json() # Returns event data as a JSON List
+    else:
+        print("Failed to fetch events data: ", response.status_code)
+        return []
