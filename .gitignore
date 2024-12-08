@@ -6,3 +6,8 @@ Dev_test/config/
 Dev_test/data/
 
 *.pyc
+
+Data_Cleaning/data
+Data_Cleaning/config
+
+
