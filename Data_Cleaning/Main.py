@@ -41,6 +41,11 @@ for file in file_names:
     df_parent = pd.read_csv(target_path, sep=',',skiprows=20)
     final_dataframe=df_parent.dropna(subset=['Description','Balance'],how='all')
     
+    sub=pd.read_csv(target_path, sep=',')
+    sub_df=sub.iloc[:19,:2].copy()
+    sub_df.transpose()
+    sub_df.to_csv('sub_df.csv',index=False)    
+
     # downloading the final dataframe and creating an output file in output directory
     timestamp=f'{datetime.now().strftime("%Y%m%d%H%M%S")}'
     output_file_name=f"output_{file.split('.')[0]}_{timestamp}.csv"
